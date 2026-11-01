@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Интернет, ТВ и связь для дома — закажите звонок</title>
+<meta name="description" content="Домашний интернет, ТВ, мобильная связь, видеонаблюдение и ИИ без VPN. Оставьте номер — мы перезвоним.">
+<style>
+  :root {
+    --accent: #e30611;
+    --accent-dark: #b8050e;
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --border: #d2d2d7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 24px 16px 40px; }
+  header { padding: 8px 0 20px; }
+  .brand { font-weight: 700; color: var(--accent); letter-spacing: .02em; }
+  h1 { font-size: 26px; line-height: 1.2; margin: 12px 0 8px; }
+  .lead { color: var(--muted); margin: 0; }
+  ul.perks { list-style: none; padding: 0; margin: 20px 0; display: grid; gap: 10px; }
+  ul.perks li {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 14px 12px 44px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+  ul.perks li::before {
+    content: "✓";
+    position: absolute; left: 14px; top: 12px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700;
+  }
+  form {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+  form h2 { margin: 0 0 14px; font-size: 20px; }
+  label { display: block; font-size: 14px; color: var(--muted); margin: 12px 0 6px; }
+  input[type=text], input[type=tel], select {
+    width: 100%;
+    font-size: 17px; /* 16+ чтобы iOS не зумил поле */
+    padding: 13px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text);
+  }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0 0; font-size: 13px; color: var(--muted); }
+  .consent input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--accent); }
+  .consent a { color: var(--accent); }
+  button {
+    width: 100%; margin-top: 18px;
+    font-size: 17px; font-weight: 600;
+    padding: 15px; border: 0; border-radius: 12px;
+    background: var(--accent); color: #fff; cursor: pointer;
+  }
+  button:active { background: var(--accent-dark); }
+  button:disabled { opacity: .6; cursor: default; }
+  .error { color: #c00; font-size: 14px; margin-top: 12px; display: none; }
+  .hp { position: absolute; left: -9999px; height: 0; width: 0; overflow: hidden; }
+  .success { display: none; text-align: center; padding: 28px 8px; }
+  .success .ok {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-size: 28px; margin: 0 auto 14px;
+  }
+  footer { margin-top: 20px; font-size: 12px; color: var(--muted); text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <!-- Сюда можно поставить логотип, но только с разрешения компании (бренд-требования) -->
+    <div class="brand">Всё в одном пакете</div>
+    <h1>Домашний интернет, ТВ и мобильная связь</h1>
+    <p class="lead">Оставьте номер — перезвоним и подберём условия под вашу семью.</p>
+  </header>
+
+  <ul class="perks">
+    <li>Интернет, ТВ и мобильная связь — в одном пакете</li>
+    <li>Видеонаблюдение для вашего дома</li>
+    <li>Нейросети (ИИ) доступны без VPN</li>
+    <li>Консультация специалиста — бесплатно</li>
+    <li>Перезвоним в удобное для вас время</li>
+  </ul>
+
+  <form id="lead-form" novalidate>
+    <div id="form-body">
+      <h2>Заказать звонок</h2>
+
+      <label for="name">Как к вам обращаться</label>
+      <input type="text" id="name" name="name" autocomplete="given-name" autocapitalize="words" maxlength="40" placeholder="Иван" required>
+
+      <label for="phone">Телефон</label>
+      <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" maxlength="16" placeholder="+7 900 123-45-67" required>
+
+      <label for="time">Когда удобно позвонить</label>
+      <select id="time" name="time">
+        <option>В ближайшее время</option>
+        <option>Утром (9–12)</option>
+        <option>Днём (12–17)</option>
+        <option>Вечером (17–20)</option>
+      </select>
+
+      <!-- Ловушка для ботов: люди это поле не видят и не заполняют -->
+      <div class="hp" aria-hidden="true">
+        <label>Сайт <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="consent" required>
+        <span>Согласен на обработку персональных данных. <a href="#" id="policy-link">Политика обработки данных</a></span>
+      </label>
+
+      <div class="error" id="error"></div>
+      <button type="submit" id="submit">Заказать звонок</button>
+    </div>
+
+    <div class="success" id="success">
+      <div class="ok">✓</div>
+      <h2>Заявка отправлена</h2>
+      <p class="lead">Мы скоро свяжемся с вами. Спасибо!</p>
+    </div>
+  </form>
+
+  <footer>Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</footer>
+</div>
+
+<script>
+  // ВСТАВЬ СЮДА адрес своего воркера после деплоя (шаг 4 в README)
+  const WORKER_URL = "https://ВАШ-ВОРКЕР.ВАШ-АККАУНТ.workers.dev";
+
+  // Метка источника из ссылки QR: ?src=metro1
+  const src = new URLSearchParams(location.search).get("src") || "direct";
+
+  const form = document.getElementById("lead-form");
+  const btn = document.getElementById("submit");
+  const errBox = document.getElementById("error");
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
+
+  // ---------- Имя: только буквы (любой язык), пробел, дефис, апостроф ----------
+  const NAME_RE = /^\p{L}[\p{L} '\-]{1,39}$/u;
+
+  nameInput.addEventListener("input", () => {
+    nameInput.value = nameInput.value
+      .replace(/[^\p{L} '\-]/gu, "") // выкидываем цифры и любые символы
+      .replace(/^[ '\-]+/, "");      // имя не может начинаться с пробела/дефиса
+  });
+
+  // ---------- Телефон: всегда +7, дальше ровно 10 цифр ----------
+  function getPhoneDigits(v) {
+    let d = v.replace(/\D/g, "");
+    d = d.replace(/^[78]/, "");   // убираем +7 / 7 / 8 в начале (в том числе при вставке "89001234567")
+    d = d.replace(/^8/, "");      // если человек сам набрал 8 после +7, тоже убираем
+    return d.slice(0, 10);
+  }
+
+  function formatPhone(d) {
+    let out = "+7 ";
+    if (d.length > 0) out += d.slice(0, 3);
+    if (d.length > 3) out += " " + d.slice(3, 6);
+    if (d.length > 6) out += "-" + d.slice(6, 8);
+    if (d.length > 8) out += "-" + d.slice(8, 10);
+    return out;
+  }
+
+  phoneInput.addEventListener("input", () => {
+    phoneInput.value = formatPhone(getPhoneDigits(phoneInput.value));
+  });
+  phoneInput.addEventListener("focus", () => {
+    if (!phoneInput.value) phoneInput.value = "+7 ";
+  });
+  phoneInput.addEventListener("blur", () => {
+    if (getPhoneDigits(phoneInput.value) === "") phoneInput.value = "";
+  });
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.style.display = "block";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errBox.style.display = "none";
+
+    const name = nameInput.value.trim().replace(/\s+/g, " ");
+    const digits = getPhoneDigits(phoneInput.value);
+    const phone = "+7" + digits; // в Telegram уйдёт в виде +79001234567
+    const time = document.getElementById("time").value;
+    const website = document.getElementById("website").value; // ловушка
+    const consent = document.getElementById("consent").checked;
+
+    if (!NAME_RE.test(name)) return showError("Введите имя буквами (от 2 до 40 символов)");
+    if (digits.length !== 10) return showError("Введите номер полностью: 10 цифр после +7");
+    if (!consent) return showError("Нужно согласие на обработку данных");
+
+    btn.disabled = true;
+    btn.textContent = "Отправляем…";
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, time, src, website }),
+      });
+      if (!res.ok) throw new Error("bad status " + res.status);
+      document.getElementById("form-body").style.display = "none";
+      document.getElementById("success").style.display = "block";
+    } catch (err) {
+      showError("Не получилось отправить. Попробуйте ещё раз чуть позже.");
+      btn.disabled = false;
+      btn.textContent = "Заказать звонок";
+    }
+  });
+</script>
+</body>
+</html>
