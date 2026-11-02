@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#e30611">
+<meta name="theme-color" content="#ffffff">
 <title>Интернет, ТВ и связь для дома — закажите звонок</title>
 <meta name="description" content="Домашний интернет, ТВ, мобильная связь, видеонаблюдение и ИИ без VPN. Оставьте номер — мы перезвоним.">
 <style>
   :root {
     --red: #e30611;
-    --red-deep: #a80410;
-    --ink: #2a1517;
-    --muted: #6b5558;
-    --blush: #fff0ee;
-    --line: #e8cfcb;
+    --red-deep: #b8050e;
+    --ink: #1f1a1b;
+    --muted: #70686a;
+    --paper: #ffffff;
+    --mist: #f4f1f1;
+    --tint: #fdeceb;
+    --line: #e4dede;
     --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
@@ -21,118 +23,90 @@
   body {
     margin: 0;
     font-family: var(--font);
-    background: var(--blush);
+    background: var(--mist);
     color: var(--ink);
     line-height: 1.45;
   }
 
-  /* ---------- Красный блок ---------- */
-  .hero {
-    position: relative;
-    overflow: hidden;
+  .page {
+    max-width: 1040px; margin: 0 auto; padding: 0 16px 24px;
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; flex-direction: column;
+  }
+
+  /* ---------- Шапка с заголовком ---------- */
+  .top { padding: 34px 4px 22px; }
+  /* Сюда можно поставить логотип, но только с разрешения компании (бренд-требования) */
+  .top h1 {
+    margin: 0 0 12px;
+    font-size: clamp(34px, 9.5vw, 56px);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .top h1 .bar {
+    display: inline-block;
     background: var(--red);
     color: #fff;
-    padding: 40px 20px 92px;
+    padding: 0 .22em .06em;
+    border-radius: .18em;
+    transform: rotate(-1.2deg);
+    margin: .06em 0;
   }
-  .hero .rings {
-    position: absolute;
-    top: -90px; right: -130px;
-    width: 380px; height: 380px;
-    pointer-events: none;
-  }
-  .hero-inner { position: relative; max-width: 520px; margin: 0 auto; }
-  /* Сюда можно поставить логотип, но только с разрешения компании (бренд-требования) */
-  .hero h1 {
-    margin: 0 0 14px;
-    font-size: clamp(36px, 11vw, 52px);
-    line-height: 1.02;
-    font-weight: 900;
-    letter-spacing: -0.025em;
-  }
-  .hero .lead {
-    margin: 0 0 30px;
-    max-width: 30ch;
-    font-size: 18px;
-    line-height: 1.4;
-  }
+  .top .lead { margin: 0; font-size: 18px; color: var(--muted); max-width: 34ch; }
 
-  /* ---------- Иконки-плюсы ---------- */
-  .perks {
-    list-style: none;
-    margin: 0; padding: 0;
-    display: flex; flex-wrap: wrap; justify-content: flex-start;
-    gap: 22px 12px;
+  /* ---------- Плитки плюсов ---------- */
+  .tiles {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
   }
-  .perks li {
-    flex: 0 0 calc(33.333% - 8px);
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center;
-    font-size: 13px; font-weight: 700; line-height: 1.2;
-  }
-  .perks .ic {
-    width: 60px; height: 60px;
-    display: grid; place-items: center;
-    margin-bottom: 9px;
-    background: #fff;
-    color: var(--red);
+  .tiles li {
+    background: var(--paper);
     border-radius: 18px;
-    box-shadow: 0 4px 0 var(--red-deep);
+    padding: 16px 14px 14px;
+    min-height: 118px;
+    display: flex; flex-direction: column; justify-content: space-between;
   }
-  .perks .ic svg { width: 30px; height: 30px; }
+  .tiles li:nth-child(1) { grid-column: 1 / -1; background: var(--red); color: #fff; min-height: 104px; }
+  .tiles .ic {
+    width: 44px; height: 44px; border-radius: 13px;
+    display: grid; place-items: center;
+    background: var(--tint); color: var(--red);
+    margin-bottom: 14px;
+  }
+  .tiles li:nth-child(1) .ic { background: rgba(255,255,255,.18); color: #fff; margin-bottom: 10px; }
+  .tiles .ic svg { width: 24px; height: 24px; }
+  .tiles b { display: block; font-size: 17px; line-height: 1.15; letter-spacing: -0.01em; }
+  .tiles span.d { display: block; margin-top: 3px; font-size: 13px; opacity: .72; line-height: 1.25; }
 
-  /* ---------- Форма-талон ---------- */
-  .ticket-wrap { padding: 0 16px 36px; }
-  .ticket {
-    position: relative;
-    max-width: 520px;
-    margin: -56px auto 0;
-    background: #fff;
-    border-radius: 22px;
-    padding: 24px 22px 26px;
-    box-shadow: 0 10px 0 var(--red-deep), 0 18px 30px rgba(120, 10, 16, .18);
+  /* ---------- Форма ---------- */
+  .form-side { margin-top: 18px; }
+  form#lead-form {
+    background: var(--paper);
+    border-radius: 24px;
+    padding: 24px 20px 24px;
+    border: 2px solid var(--red);
   }
-  .ticket h2 { margin: 0 0 4px; font-size: 24px; line-height: 1.15; font-weight: 900; letter-spacing: -0.01em; }
-  .ticket .sub { margin: 0; color: var(--muted); font-size: 15px; }
+  form h2 { margin: 0 0 4px; font-size: 26px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
+  form .sub { margin: 0 0 6px; color: var(--muted); font-size: 15px; }
 
-  .cut {
-    position: relative;
-    display: flex; align-items: center; gap: 8px;
-    margin: 18px 0 6px;
-    color: var(--red);
-  }
-  .cut svg { width: 22px; height: 22px; flex: none; }
-  .cut::before {
-    content: "";
-    order: 1;
-    flex: 1;
-    border-top: 2px dashed var(--red);
-  }
-  /* Полукруглые вырезы по краям талона */
-  .cut::after {
-    content: "";
-    position: absolute; left: -22px; right: -22px; top: 50%;
-    height: 22px; margin-top: -11px;
-    pointer-events: none;
-    background:
-      radial-gradient(circle 11px at 0 50%, var(--blush) 97%, transparent 100%) left center / 22px 22px no-repeat,
-      radial-gradient(circle 11px at 100% 50%, var(--blush) 97%, transparent 100%) right center / 22px 22px no-repeat;
-  }
-
-  label.field { display: block; font-size: 14px; font-weight: 700; margin: 16px 0 6px; }
+  label.field { display: block; font-size: 14px; font-weight: 600; margin: 16px 0 6px; color: var(--ink); }
   input[type=text], input[type=tel], select {
     width: 100%;
     font: inherit;
     font-size: 17px; /* 16+ чтобы iOS не зумил поле */
     padding: 14px 15px;
-    border: 2px solid var(--line);
-    border-radius: 14px;
-    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    background: var(--mist);
     color: var(--ink);
+    transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
   }
-  input:focus-visible, select:focus-visible {
-    outline: 3px solid var(--ink);
-    outline-offset: 2px;
+  input[type=text]:focus, input[type=tel]:focus, select:focus {
+    outline: none;
+    background: #fff;
     border-color: var(--red);
+    box-shadow: 0 0 0 4px rgba(227, 6, 17, .14);
   }
   .consent { display: flex; gap: 10px; align-items: flex-start; margin: 18px 0 0; font-size: 13px; color: var(--muted); }
   .consent input { margin-top: 2px; width: 20px; height: 20px; flex: none; accent-color: var(--red); }
@@ -140,135 +114,157 @@
 
   button#submit {
     width: 100%; margin-top: 20px;
-    font: inherit; font-size: 19px; font-weight: 900; letter-spacing: -0.005em;
-    padding: 17px; border: 0; border-radius: 16px;
+    font: inherit; font-size: 18px; font-weight: 700;
+    padding: 17px; border: 0; border-radius: 14px;
     background: var(--red); color: #fff; cursor: pointer;
-    box-shadow: 0 5px 0 var(--red-deep);
-    transition: transform .08s ease, box-shadow .08s ease;
+    transition: background-color .15s ease, transform .08s ease;
   }
-  button#submit:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--red-deep); }
-  button#submit:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-  button#submit:disabled { opacity: .65; cursor: default; }
+  button#submit:hover { background: var(--red-deep); }
+  button#submit:active { transform: scale(.985); }
+  button#submit:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(227, 6, 17, .28); }
+  button#submit:disabled { opacity: .6; cursor: default; }
 
-  .error { color: #b00020; font-size: 15px; font-weight: 700; margin-top: 14px; display: none; }
+  .error { color: #b00020; font-size: 15px; font-weight: 600; margin-top: 14px; display: none; }
   .hp { position: absolute; left: -9999px; height: 0; width: 0; overflow: hidden; }
 
-  .success { display: none; text-align: center; padding: 26px 4px 12px; }
-  .success .ok {
-    width: 72px; height: 72px; border-radius: 50%;
+  /* ---------- Баннер «Заявка отправлена» на весь экран (до перезагрузки страницы) ---------- */
+  .done {
+    position: fixed; inset: 0; z-index: 100;
+    display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px;
+    text-align: center;
+    background: var(--paper);
+    outline: none;
+  }
+  .done .ok {
+    width: 104px; height: 104px; border-radius: 50%;
     background: var(--red); color: #fff;
     display: grid; place-items: center;
-    font-size: 38px; font-weight: 900;
-    margin: 0 auto 16px;
-    box-shadow: 0 5px 0 var(--red-deep);
+    font-size: 54px; font-weight: 800;
+    margin-bottom: 28px;
+    animation: pop .45s cubic-bezier(.2, 1.4, .4, 1) both;
   }
-  .success h2 { margin: 0 0 6px; }
-  .success p { margin: 0; color: var(--muted); }
+  .done h2 {
+    margin: 0 0 12px;
+    font-size: clamp(34px, 10vw, 52px);
+    line-height: 1.05; font-weight: 800; letter-spacing: -0.03em;
+  }
+  .done p { margin: 0; font-size: 19px; line-height: 1.4; max-width: 26ch; color: var(--muted); }
+  .done .phone { font-weight: 800; color: var(--ink); white-space: nowrap; }
+  @keyframes pop { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .done .ok { animation: none; } }
 
-  footer { max-width: 520px; margin: 22px auto 0; padding: 0 8px; font-size: 12px; color: var(--muted); text-align: center; }
+  footer { margin-top: auto; padding: 22px 8px 0; font-size: 12px; color: var(--muted); text-align: center; }
+
+  /* ---------- Широкий экран: заголовок и плитки слева, форма справа ---------- */
+  @media (min-width: 860px) {
+    .page {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      grid-template-areas: "top form" "tiles form" "foot foot";
+      grid-template-rows: auto auto 1fr;
+      column-gap: 40px;
+      align-items: start;
+      padding-top: 24px;
+    }
+    .top { grid-area: top; padding-top: 40px; }
+    .tiles { grid-area: tiles; }
+    .form-side { grid-area: form; margin-top: 40px; position: sticky; top: 24px; }
+    footer { grid-area: foot; align-self: end; margin-top: 0; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    button#submit { transition: none; }
+    input, select, button#submit { transition: none; }
   }
 </style>
 </head>
 <body>
+<div class="page">
 
-<header class="hero">
-  <svg class="rings" viewBox="0 0 380 380" aria-hidden="true" focusable="false">
-    <g fill="none" stroke="#fff" stroke-opacity=".13" stroke-width="16">
-      <circle cx="190" cy="190" r="60"/>
-      <circle cx="190" cy="190" r="110"/>
-      <circle cx="190" cy="190" r="160"/>
-    </g>
-  </svg>
-
-  <div class="hero-inner">
-    <h1>Всё для дома<br>в одном пакете</h1>
+  <header class="top">
+    <h1>Всё для дома <span class="bar">в одном пакете</span></h1>
     <p class="lead">Оставьте номер — перезвоним и подберём условия под вашу семью.</p>
+  </header>
 
-    <ul class="perks">
-      <li>
-        <span class="ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9a14 14 0 0 1 19 0"/><path d="M5.8 12.6a9.3 9.3 0 0 1 12.4 0"/><path d="M9 16.1a4.7 4.7 0 0 1 6 0"/><circle cx="12" cy="19.6" r="1" fill="currentColor"/></svg>
-        </span>
-        Домашний интернет
-      </li>
-      <li>
-        <span class="ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="M8.5 21h7"/></svg>
-        </span>
-        Телевидение
-      </li>
-      <li>
-        <span class="ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg>
-        </span>
-        Мобильная связь
-      </li>
-      <li>
-        <span class="ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="13.5" height="10" rx="2.5"/><path d="M15.5 10.5 22 7.5v9l-6.5-3"/></svg>
-        </span>
-        Видеонаблюдение
-      </li>
-      <li>
-        <span class="ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 3.5 12 8.2l4.7 1.5L12 11.2 10.5 16 9 11.2 4.3 9.7 9 8.2z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
-        </span>
-        Нейросети без VPN
-      </li>
-    </ul>
-  </div>
-</header>
+  <ul class="tiles">
+    <li>
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9a14 14 0 0 1 19 0"/><path d="M5.8 12.6a9.3 9.3 0 0 1 12.4 0"/><path d="M9 16.1a4.7 4.7 0 0 1 6 0"/><circle cx="12" cy="19.6" r="1" fill="currentColor"/></svg>
+      </span>
+      <div><b>Домашний интернет</b></div>
+    </li>
+    <li>
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="M8.5 21h7"/></svg>
+      </span>
+      <div><b>Телевидение</b></div>
+    </li>
+    <li>
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg>
+      </span>
+      <div><b>Мобильная связь</b></div>
+    </li>
+    <li>
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="13.5" height="10" rx="2.5"/><path d="M15.5 10.5 22 7.5v9l-6.5-3"/></svg>
+      </span>
+      <div><b>Видеонаблюдение</b></div>
+    </li>
+    <li>
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 3.5 12 8.2l4.7 1.5L12 11.2 10.5 16 9 11.2 4.3 9.7 9 8.2z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+      </span>
+      <div><b>Нейросети без VPN</b></div>
+    </li>
+  </ul>
 
-<main class="ticket-wrap">
-  <form id="lead-form" class="ticket" novalidate>
-    <div id="form-body">
-      <h2>Закажите звонок</h2>
-      <p class="sub">Консультация бесплатная. Перезвоним в удобное для вас время.</p>
+  <main class="form-side">
+    <form id="lead-form" novalidate>
+      <div id="form-body">
+        <h2>Закажите звонок</h2>
+        <p class="sub">Консультация бесплатная. Перезвоним в удобное для вас время.</p>
 
-      <div class="cut" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9"/><path d="M14.5 14.5 20 20"/><path d="M8.1 8.1 12 12"/></svg>
+        <label class="field" for="name">Как к вам обращаться</label>
+        <input type="text" id="name" name="name" autocomplete="given-name" autocapitalize="words" maxlength="40" placeholder="Имя" required>
+
+        <label class="field" for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" maxlength="16" placeholder="+7 900 123-45-67" required>
+
+        <label class="field" for="time">Когда удобно позвонить</label>
+        <select id="time" name="time">
+          <option>В ближайшее время</option>
+          <option>Утром (9–12)</option>
+          <option>Днём (12–17)</option>
+          <option>Вечером (17–20)</option>
+        </select>
+
+        <!-- Ловушка для ботов: люди это поле не видят и не заполняют -->
+        <div class="hp" aria-hidden="true">
+          <label>Сайт <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" id="consent" required>
+          <span>Согласен на обработку персональных данных. <a href="#" id="policy-link">Политика обработки данных</a></span>
+        </label>
+
+        <div class="error" id="error" role="alert"></div>
+        <button type="submit" id="submit">Заказать звонок</button>
       </div>
 
-      <label class="field" for="name">Как к вам обращаться</label>
-      <input type="text" id="name" name="name" autocomplete="given-name" autocapitalize="words" maxlength="40" placeholder="Иван" required>
-
-      <label class="field" for="phone">Телефон</label>
-      <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" maxlength="16" placeholder="+7 900 123-45-67" required>
-
-      <label class="field" for="time">Когда удобно позвонить</label>
-      <select id="time" name="time">
-        <option>В ближайшее время</option>
-        <option>Утром (9–12)</option>
-        <option>Днём (12–17)</option>
-        <option>Вечером (17–20)</option>
-      </select>
-
-      <!-- Ловушка для ботов: люди это поле не видят и не заполняют -->
-      <div class="hp" aria-hidden="true">
-        <label>Сайт <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
-      </div>
-
-      <label class="consent">
-        <input type="checkbox" id="consent" required>
-        <span>Согласен на обработку персональных данных. <a href="#" id="policy-link">Политика обработки данных</a></span>
-      </label>
-
-      <div class="error" id="error" role="alert"></div>
-      <button type="submit" id="submit">Заказать звонок</button>
-    </div>
-
-    <div class="success" id="success">
-      <div class="ok" aria-hidden="true">✓</div>
-      <h2>Заявка отправлена</h2>
-      <p>Мы скоро свяжемся с вами. Спасибо!</p>
-    </div>
-  </form>
+    </form>
+  </main>
 
   <footer>Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</footer>
-</main>
+</div>
+
+<div class="done" id="done" role="status" aria-live="polite" tabindex="-1">
+  <div class="ok" aria-hidden="true">✓</div>
+  <h2>Заявка отправлена</h2>
+  <p>Перезвоним вам на номер <span class="phone" id="done-phone"></span>. Спасибо!</p>
+</div>
 
 <script>
   // ВСТАВЬ СЮДА адрес своего воркера после деплоя (шаг 4 в README)
@@ -349,8 +345,13 @@
         body: JSON.stringify({ name, phone, time, src, website }),
       });
       if (!res.ok) throw new Error("bad status " + res.status);
-      document.getElementById("form-body").style.display = "none";
-      document.getElementById("success").style.display = "block";
+      // Баннер на весь экран: закрыть его нельзя, он пропадает только при перезагрузке страницы
+      document.getElementById("done-phone").textContent = formatPhone(digits);
+      form.inert = true;
+      document.body.style.overflow = "hidden";
+      const done = document.getElementById("done");
+      done.style.display = "flex";
+      done.focus();
     } catch (err) {
       showError("Не получилось отправить. Попробуйте ещё раз чуть позже.");
       btn.disabled = false;
