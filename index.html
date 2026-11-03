@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
-<title>Интернет, ТВ и связь для дома — закажите звонок</title>
-<meta name="description" content="Домашний интернет, ТВ, мобильная связь, видеонаблюдение и ИИ без VPN. Оставьте номер — мы перезвоним.">
+<title>Первый месяц бесплатно — интернет, ТВ и связь МТС для дома</title>
+<meta name="description" content="Тариф «МТС Дома Супер»: 200 Мбит/с, 220+ ТВ-каналов, безлимит ГБ и 6 SIM-карт. Первый месяц бесплатно при переносе номера. Оставьте номер — мы перезвоним.">
 <style>
   :root {
     --red: #e30611;
@@ -53,7 +53,8 @@
     transform: rotate(-1.2deg);
     margin: .06em 0;
   }
-  .top .lead { margin: 0; font-size: 18px; color: var(--muted); max-width: 34ch; }
+  .top .lead { margin: 0; font-size: 18px; color: var(--muted); max-width: 40ch; }
+  .top .lead b { color: var(--ink); }
 
   /* ---------- Плитки плюсов ---------- */
   .tiles {
@@ -67,7 +68,7 @@
     min-height: 118px;
     display: flex; flex-direction: column; justify-content: space-between;
   }
-  .tiles li:nth-child(1) { grid-column: 1 / -1; background: var(--red); color: #fff; min-height: 104px; }
+  .tiles li:nth-child(1) { background: var(--red); color: #fff; }
   .tiles .ic {
     width: 44px; height: 44px; border-radius: 13px;
     display: grid; place-items: center;
@@ -76,8 +77,21 @@
   }
   .tiles li:nth-child(1) .ic { background: rgba(255,255,255,.18); color: #fff; margin-bottom: 10px; }
   .tiles .ic svg { width: 24px; height: 24px; }
-  .tiles b { display: block; font-size: 17px; line-height: 1.15; letter-spacing: -0.01em; }
+  .tiles b { display: block; font-size: 19px; font-weight: 800; line-height: 1.12; letter-spacing: -0.02em; }
   .tiles span.d { display: block; margin-top: 3px; font-size: 13px; opacity: .72; line-height: 1.25; }
+  .tiles li:nth-child(1) span.d { opacity: .95; }
+  /* Плитка с ценой на всю ширину */
+  .tiles li.price {
+    grid-column: 1 / -1;
+    min-height: 0;
+    flex-direction: row; align-items: center; justify-content: space-between; gap: 16px;
+    background: var(--ink); color: #fff;
+    padding: 16px 18px;
+  }
+  .tiles li.price b { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap; }
+  .tiles li.price span.d { margin: 0; max-width: 24ch; text-align: right; opacity: .88; }
+  .tiles li.price.promo { background: var(--red, #e30611); }
+  .tiles li.price.promo span.d { opacity: .95; }
 
   /* ---------- Форма ---------- */
   .form-side { margin-top: 18px; }
@@ -155,15 +169,14 @@
   @keyframes pop { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   @media (prefers-reduced-motion: reduce) { .done .ok { animation: none; } }
 
-  footer { margin-top: auto; padding: 22px 8px 0; font-size: 12px; color: var(--muted); text-align: center; }
 
   /* ---------- Широкий экран: заголовок и плитки слева, форма справа ---------- */
   @media (min-width: 860px) {
     .page {
       display: grid;
       grid-template-columns: 1.15fr 1fr;
-      grid-template-areas: "top form" "tiles form" "foot foot";
-      grid-template-rows: auto auto 1fr;
+      grid-template-areas: "top form" "tiles form";
+      align-content: start;
       column-gap: 40px;
       align-items: start;
       padding-top: 24px;
@@ -171,7 +184,6 @@
     .top { grid-area: top; padding-top: 40px; }
     .tiles { grid-area: tiles; }
     .form-side { grid-area: form; margin-top: 40px; position: sticky; top: 24px; }
-    footer { grid-area: foot; align-self: end; margin-top: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -183,8 +195,8 @@
 <div class="page">
 
   <header class="top">
-    <h1>Всё для дома <span class="bar">в одном пакете</span></h1>
-    <p class="lead">Оставьте номер — перезвоним и подберём условия под вашу семью.</p>
+    <h1>Первый месяц <span class="bar">БЕСПЛАТНО</span></h1>
+    <p class="lead"><b>домашнего интернета, ТВ и мобильной связи</b><br>при переносе номера другого оператора в МТС</p>
   </header>
 
   <ul class="tiles">
@@ -192,31 +204,33 @@
       <span class="ic" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9a14 14 0 0 1 19 0"/><path d="M5.8 12.6a9.3 9.3 0 0 1 12.4 0"/><path d="M9 16.1a4.7 4.7 0 0 1 6 0"/><circle cx="12" cy="19.6" r="1" fill="currentColor"/></svg>
       </span>
-      <div><b>Домашний интернет</b></div>
+      <div><b>200 Мбит/с</b><span class="d">домашний интернет</span></div>
     </li>
     <li>
       <span class="ic" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="M8.5 21h7"/></svg>
       </span>
-      <div><b>Телевидение</b></div>
+      <div><b>220+</b><span class="d">ТВ-каналов</span></div>
     </li>
     <li>
       <span class="ic" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg>
       </span>
-      <div><b>Мобильная связь</b></div>
+      <div><b>Безлимит ГБ</b><span class="d">и 2000 минут</span></div>
     </li>
     <li>
       <span class="ic" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="13.5" height="10" rx="2.5"/><path d="M15.5 10.5 22 7.5v9l-6.5-3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h6.5L19 7.5V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><rect x="9" y="11.5" width="7" height="6" rx="1.2"/></svg>
       </span>
-      <div><b>Видеонаблюдение</b></div>
+      <div><b>6 SIM-карт</b><span class="d">включено в тариф</span></div>
     </li>
-    <li>
-      <span class="ic" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 3.5 12 8.2l4.7 1.5L12 11.2 10.5 16 9 11.2 4.3 9.7 9 8.2z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
-      </span>
-      <div><b>Нейросети без VPN</b></div>
+    <li class="price">
+      <b>1100 ₽/мес</b>
+      <span class="d">базовая стоимость тарифа «МТС Дома Супер» за все услуги</span>
+    </li>
+    <li class="price promo">
+      <b>550 ₽/мес</b>
+      <span class="d">дополнительная скидка на 3 месяца при заказе звонка</span>
     </li>
   </ul>
 
@@ -257,7 +271,6 @@
     </form>
   </main>
 
-  <footer>Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</footer>
 </div>
 
 <div class="done" id="done" role="status" aria-live="polite" tabindex="-1">
