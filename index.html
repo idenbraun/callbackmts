@@ -284,7 +284,7 @@
   const WORKER_URL = "https://functions.yandexcloud.net/d4epl2t3s3uefhrqav1k";
 
   // Метка источника из ссылки QR: ?src=metro1
-  const src = new URLSearchParams(location.search).get("src") || "direct";
+  const src = new URLSearchParams(location.search).get("src") || "master";
 
   const form = document.getElementById("lead-form");
   const btn = document.getElementById("submit");
