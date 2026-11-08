@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1f1a1b">
+<title>Работа агентом по прямым продажам МТС — гибкий график</title>
+<meta name="description" content="Ищем агента по прямым продажам услуг фиксированной связи: размещение листовок, приём входящих звонков, гибкий график, самозанятость. Оставьте контакт — мы свяжемся.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#ff0032;--red-deep:#d60029;--ink:#1f1a1b;--muted:#70686a;--paper:#fff;--mist:#f6f3f2;--tint:#ffe9ed;--line:#e4dede;
+    --font:"Rubik",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:var(--font);background:var(--mist);color:var(--ink);line-height:1.45}
+  .page{max-width:1080px;margin:0 auto;padding:0 16px 28px;display:flex;flex-direction:column;gap:14px}
+
+  /* Герой */
+  .hero{background:var(--ink);color:#fff;border-radius:0 0 32px 32px;margin:0 -16px;padding:34px 20px 30px}
+  .hero .in{max-width:1080px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand img{width:64px;height:64px;border-radius:14px;display:block}
+  .kicker{display:inline-block;border:2px solid rgba(255,255,255,.85);color:#fff;font-weight:800;font-size:13px;letter-spacing:.08em;padding:7px 14px;border-radius:999px}
+  .hero h1{margin:18px 0 14px;font-size:clamp(34px,9vw,60px);line-height:1.02;font-weight:900;letter-spacing:-.03em}
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero p{margin:0;font-size:18px;color:#d9d1d2;max-width:36ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chips span{border:2px solid rgba(255,255,255,.85);border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px;letter-spacing:.03em}
+
+  /* Цепочка работы */
+  h2.sec{margin:10px 4px 0;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+  .steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .steps li{background:var(--paper);border-radius:22px;padding:18px 18px 18px 78px;position:relative;box-shadow:0 1px 0 var(--line)}
+  .steps .n{position:absolute;left:16px;top:16px;width:48px;height:48px;border-radius:15px;background:var(--tint);color:var(--red);
+    display:grid;place-items:center;font-size:24px;font-weight:900}
+  .steps b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .steps span{display:block;margin-top:4px;font-size:15px;color:var(--muted)}
+
+  /* Цифры плана */
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat{background:var(--paper);border-radius:20px;padding:16px;box-shadow:0 1px 0 var(--line)}
+  .stat b{display:block;font-size:34px;font-weight:800;line-height:1;letter-spacing:-.03em}
+  .stat b.r{color:var(--red)}
+  .stat span{display:block;margin-top:6px;font-size:14px;color:var(--muted);line-height:1.25}
+  .stat.wide{grid-column:1/-1}
+
+  /* Форма */
+  .form-side{margin-top:4px}
+  form#lead-form{background:var(--paper);border-radius:26px;padding:24px 20px;border:1.5px solid var(--line);box-shadow:0 8px 24px rgba(31,26,27,.06)}
+  form h2{margin:0 0 4px;font-size:28px;line-height:1.1;font-weight:900;letter-spacing:-.02em}
+  form .sub{margin:0 0 6px;color:var(--muted);font-size:15px}
+  label.field{display:block;font-size:14px;font-weight:600;margin:16px 0 6px}
+  input[type=text],input[type=tel],select{width:100%;font:inherit;font-size:17px;padding:14px 15px;border:1.5px solid var(--line);border-radius:12px;background:var(--mist);color:var(--ink);transition:border-color .15s,box-shadow .15s,background-color .15s}
+  input[type=text]:focus,input[type=tel]:focus,select:focus{outline:none;background:#fff;border-color:var(--red);box-shadow:0 0 0 4px rgba(255,0,50,.14)}
+  .consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0 0;font-size:13px;color:var(--muted)}
+  .consent input{margin-top:2px;width:20px;height:20px;flex:none;accent-color:var(--red)}
+  .consent a{color:var(--red)}
+  button#submit{width:100%;margin-top:20px;font:inherit;font-size:18px;font-weight:800;padding:17px;border:0;border-radius:14px;background:var(--red);color:#fff;cursor:pointer;transition:background-color .15s,transform .08s}
+  button#submit:hover{background:var(--red-deep)}
+  button#submit:active{transform:scale(.985)}
+  button#submit:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(255,0,50,.3)}
+  button#submit:disabled{opacity:.6;cursor:default}
+  .error{color:#b00020;font-size:15px;font-weight:600;margin-top:14px;display:none}
+  .hp{position:absolute;left:-9999px;height:0;width:0;overflow:hidden}
+
+  .done{position:fixed;inset:0;z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:var(--paper);outline:none}
+  .done .ok{width:104px;height:104px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:54px;font-weight:800;margin-bottom:28px;animation:pop .45s cubic-bezier(.2,1.4,.4,1) both}
+  .done h2{margin:0 0 12px;font-size:clamp(34px,10vw,52px);line-height:1.05;font-weight:900;letter-spacing:-.03em}
+  .done p{margin:0;font-size:19px;line-height:1.4;max-width:26ch;color:var(--muted)}
+  .done .phone{font-weight:800;color:var(--ink);white-space:nowrap}
+  @keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+
+  @media(min-width:900px){
+    .page{display:grid;grid-template-columns:1.2fr 1fr;grid-template-areas:"hero hero" "steps form" "stats form";column-gap:36px;row-gap:14px;align-content:start;align-items:start}
+    .hero{grid-area:hero;margin:0 -16px;border-radius:0 0 40px 40px;padding:56px 32px 48px}
+    .hero .in{padding:0 16px}
+    .left1{grid-area:steps}.left2{grid-area:stats}
+    .form-side{grid-area:form;position:sticky;top:24px;margin-top:12px}
+  }
+  @media(prefers-reduced-motion:reduce){.done .ok{animation:none}input,select,button#submit{transition:none}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="in">
+      <div class="brand"><img src="data:image/png;base64,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" alt="МТС" width="64" height="64"><span class="kicker">ПРЯМЫЕ ПРОДАЖИ</span></div>
+      <h1>Размещаешь листовки.<br>Принимаешь звонки.<br><em>Получаешь оплату.</em></h1>
+      <p>Ищем агента по прямым продажам домашнего интернета и телевидения МТС.</p>
+      <div class="chips"><span>ГИБКИЙ ГРАФИК</span><span>САМОЗАНЯТОСТЬ</span><span>ОБУЧЕНИЕ И ПОДДЕРЖКА</span></div>
+    </div>
+  </header>
+
+  <section class="left1">
+    <h2 class="sec">КАК ЭТО РАБОТАЕТ</h2>
+    <ol class="steps" style="margin-top:10px">
+      <li><span class="n">1</span><b>Размещаешь листовки</b><span>В нужных местах на своей территории. Качество размещения — главное, от него зависит поток звонков.</span></li>
+      <li><span class="n">2</span><b>Принимаешь входящие звонки</b><span>Люди звонят по листовке. Ты отвечаешь, консультируешь по домашнему интернету и ТВ и ведёшь человека до заявки.</span></li>
+      <li><span class="n">3</span><b>Получаешь оплату за результат</b><span>За подключённые услуги плюс премия по грейдам. Всё зависит от качества размещения и приёма звонков.</span></li>
+      <li><span class="n">+</span><b>Поквартирный обход</b><span>Обязательная часть работы: около 10% рабочего времени. Живое общение с жильцами помогает набирать заявки.</span></li>
+    </ol>
+  </section>
+
+  <section class="left2">
+    <h2 class="sec">ТЫ НЕ ОДИН</h2>
+    <div class="stats" style="margin-top:10px">
+      <div class="stat"><b style="font-size:22px;line-height:1.1">Обучение от компании</b><span>Внутреннее обучение: расскажем про услуги и научим вести разговор с клиентом.</span></div>
+      <div class="stat"><b style="font-size:22px;line-height:1.1">Поддержка в работе</b><span>Куратор на связи: поможет с размещением, звонками и заявками.</span></div>
+      <div class="stat wide"><b style="font-size:22px;line-height:1.1">Что мы продаём</b><span>Домашний интернет и телевидение МТС, а также мобильную связь в одном тарифе.</span></div>
+    </div>
+    <p style="margin:12px 4px 0;font-size:13px;color:var(--muted)">Оплата зависит от результата, гарантированного дохода нет. Условия и премии расскажем на собеседовании.</p>
+  </section>
+
+  <main class="form-side">
+    <form id="lead-form" novalidate>
+      <div id="form-body">
+        <h2>Оставь отклик</h2>
+        <p class="sub">Оставь номер: свяжемся и расскажем про условия и собеседование.</p>
+
+        <label class="field" for="name">Как тебя зовут</label>
+        <input type="text" id="name" name="name" autocomplete="given-name" autocapitalize="words" maxlength="40" placeholder="Имя" required>
+
+        <label class="field" for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" maxlength="16" placeholder="+7 900 123-45-67" required>
+
+        <label class="field" for="time">Когда удобно позвонить</label>
+        <select id="time" name="time">
+          <option>В ближайшее время</option>
+          <option>Утром (9–12)</option>
+          <option>Днём (12–17)</option>
+          <option>Вечером (17–20)</option>
+        </select>
+
+        <!-- Ловушка для ботов: люди это поле не видят и не заполняют -->
+        <div class="hp" aria-hidden="true">
+          <label>Сайт <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" id="consent" required>
+          <span>Согласен на обработку персональных данных. <a href="#" id="policy-link">Политика обработки данных</a></span>
+        </label>
+
+        <div class="error" id="error" role="alert"></div>
+        <button type="submit" id="submit">Откликнуться</button>
+      </div>
+
+    </form>
+  </main>
+
+</div>
+
+<div class="done" id="done" role="status" aria-live="polite" tabindex="-1">
+  <div class="ok" aria-hidden="true">✓</div>
+  <h2>Отклик отправлен</h2>
+  <p>Свяжемся с тобой по номеру <span class="phone" id="done-phone"></span>. Спасибо!</p>
+</div>
+
+<script>
+  // ВСТАВЬ СЮДА адрес своего воркера после деплоя (шаг 4 в README)
+  const WORKER_URL = "https://functions.yandexcloud.net/d4epl2t3s3uefhrqav1k";
+
+  // Метка источника из ссылки QR: ?src=metro1
+  const src = new URLSearchParams(location.search).get("src") || "agent";
+
+  const form = document.getElementById("lead-form");
+  const btn = document.getElementById("submit");
+  const errBox = document.getElementById("error");
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
+
+  // ---------- Имя: только буквы (любой язык), пробел, дефис, апостроф ----------
+  const NAME_RE = /^\p{L}[\p{L} '\-]{1,39}$/u;
+
+  nameInput.addEventListener("input", () => {
+    nameInput.value = nameInput.value
+      .replace(/[^\p{L} '\-]/gu, "") // выкидываем цифры и любые символы
+      .replace(/^[ '\-]+/, "");      // имя не может начинаться с пробела/дефиса
+  });
+
+  // ---------- Телефон: всегда +7, дальше ровно 10 цифр ----------
+  function getPhoneDigits(v) {
+    let d = v.replace(/\D/g, "");
+    d = d.replace(/^[78]/, "");   // убираем +7 / 7 / 8 в начале (в том числе при вставке "89001234567")
+    d = d.replace(/^8/, "");      // если человек сам набрал 8 после +7, тоже убираем
+    return d.slice(0, 10);
+  }
+
+  function formatPhone(d) {
+    let out = "+7 ";
+    if (d.length > 0) out += d.slice(0, 3);
+    if (d.length > 3) out += " " + d.slice(3, 6);
+    if (d.length > 6) out += "-" + d.slice(6, 8);
+    if (d.length > 8) out += "-" + d.slice(8, 10);
+    return out;
+  }
+
+  phoneInput.addEventListener("input", () => {
+    phoneInput.value = formatPhone(getPhoneDigits(phoneInput.value));
+  });
+  phoneInput.addEventListener("focus", () => {
+    if (!phoneInput.value) phoneInput.value = "+7 ";
+  });
+  phoneInput.addEventListener("blur", () => {
+    if (getPhoneDigits(phoneInput.value) === "") phoneInput.value = "";
+  });
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.style.display = "block";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errBox.style.display = "none";
+
+    const name = nameInput.value.trim().replace(/\s+/g, " ");
+    const digits = getPhoneDigits(phoneInput.value);
+    const phone = "+7" + digits; // в Telegram уйдёт в виде +79001234567
+    const time = document.getElementById("time").value;
+    const website = document.getElementById("website").value; // ловушка
+    const consent = document.getElementById("consent").checked;
+
+    if (!NAME_RE.test(name)) return showError("Введите имя буквами (от 2 до 40 символов)");
+    if (digits.length !== 10) return showError("Введите номер полностью: 10 цифр после +7");
+    if (!consent) return showError("Нужно согласие на обработку данных");
+
+    btn.disabled = true;
+    btn.textContent = "Отправляем…";
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, time, src, website, kind: "agent" }),
+      });
+      if (!res.ok) throw new Error("bad status " + res.status);
+      // Баннер на весь экран: закрыть его нельзя, он пропадает только при перезагрузке страницы
+      document.getElementById("done-phone").textContent = formatPhone(digits);
+      form.inert = true;
+      document.body.style.overflow = "hidden";
+      const done = document.getElementById("done");
+      done.style.display = "flex";
+      done.focus();
+    } catch (err) {
+      showError("Не получилось отправить. Попробуйте ещё раз чуть позже.");
+      btn.disabled = false;
+      btn.textContent = "Откликнуться";
+    }
+  });
+</script>
+</body>
+</html>
